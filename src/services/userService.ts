@@ -1,12 +1,9 @@
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
+import { PrismaClient } from "@prisma/client/extension";
 
-export const getAllUsers =  (): User[] => {
-    return [
-        {id: 1, name: 'John Doe', email: 'john@example.com'},
-        {id: 2, name: 'Jane Smith', email:'jane@example.com'}
-    ];
+const prisma = new PrismaClient();
+
+
+
+export const getAllUsers = async () => {
+    return await prisma.user.findMany();
 }
